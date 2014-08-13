@@ -1,6 +1,7 @@
 {
     "name": "krafthaus/bauhausblock",
-    "description": "",
+	"description": "Simple block handling for laravel ",
+	"keywords": ["admin generator", "bauhaus", "laravel", "cms", "blocks", "backend", "views"],
     "authors": [
         {
             "name": "KraftHaus",
@@ -16,5 +17,8 @@
             "KraftHaus\\BauhausBlock": "src/"
         }
     },
+	"suggest": {
+		"krafthaus/bauhaus": "The missing Laravel 4 Admin Generator"
+	},
     "minimum-stability": "stable"
 }
