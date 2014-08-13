@@ -106,23 +106,51 @@ abstract class Block
 			->with('options', $this->getOptionResolver());
 	}
 
+	/**
+	 * Set the cache ttl.
+	 *
+	 * @param  int $ttl
+	 *
+	 * @access public
+	 * @return $this
+	 */
 	public function setTtl($ttl)
 	{
 		$this->ttl = (int) $ttl;
 		return $this;
 	}
 
+	/**
+	 * Get the cache ttl.
+	 *
+	 * @access public
+	 * @return int
+	 */
 	public function getTtl()
 	{
 		return $this->ttl;
 	}
 
+	/**
+	 * Set the view path.
+	 *
+	 * @param  string $view
+	 *
+	 * @access public
+	 * @return $this
+	 */
 	public function setView($view)
 	{
 		$this->view = $view;
 		return $this;
 	}
 
+	/**
+	 * Get the view path.
+	 *
+	 * @access public
+	 * @return null|string
+	 */
 	public function getView()
 	{
 		return $this->view;
