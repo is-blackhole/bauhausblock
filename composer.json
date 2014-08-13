@@ -2,6 +2,8 @@
     "name": "krafthaus/bauhausblock",
 	"description": "Simple block handling for laravel ",
 	"keywords": ["admin generator", "bauhaus", "laravel", "cms", "blocks", "backend", "views"],
+	"type": "laravel-package",
+	"license": "MIT",
     "authors": [
         {
             "name": "KraftHaus",
