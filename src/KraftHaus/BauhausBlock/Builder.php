@@ -3,7 +3,7 @@
 namespace KraftHaus\BauhausBlock;
 
 /**
- * This file is part of the KraftHaus Bauhaus package.
+ * This file is part of the KraftHaus BauhausBlock package.
  *
  * (c) KraftHaus <hello@krafthaus.nl>
  *
@@ -12,6 +12,7 @@ namespace KraftHaus\BauhausBlock;
  */
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 use KraftHaus\BauhausBlock\Resolver\OptionResolver;
 
 /**

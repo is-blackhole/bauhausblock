@@ -1,8 +1,24 @@
-<?php namespace KraftHaus\BauhausBlock;
+<?php
+
+namespace KraftHaus\BauhausBlock;
+
+/**
+ * This file is part of the KraftHaus BauhausBlock package.
+ *
+ * (c) KraftHaus <hello@krafthaus.nl>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 use Illuminate\Support\ServiceProvider;
 
-class BauhausBlockServiceProvider extends ServiceProvider {
+/**
+ * Class BauhausBlockServiceProvider
+ * @package KraftHaus\BauhausBlock
+ */
+class BauhausBlockServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Indicates if loading of the provider is deferred.

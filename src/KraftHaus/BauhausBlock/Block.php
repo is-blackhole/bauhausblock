@@ -3,7 +3,7 @@
 namespace KraftHaus\BauhausBlock;
 
 /**
- * This file is part of the KraftHaus Bauhaus package.
+ * This file is part of the KraftHaus BauhausBlock package.
  *
  * (c) KraftHaus <hello@krafthaus.nl>
  *
@@ -11,7 +11,10 @@ namespace KraftHaus\BauhausBlock;
  * file that was distributed with this source code.
  */
 
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 use KraftHaus\BauhausBlock\Resolver\OptionResolver;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class Block
@@ -28,10 +31,10 @@ abstract class Block
 	protected $optionResolver;
 
 	/**
-	 * Holds the cache timeout.
-	 * @var int
+	 * When overridden, this path will be used to render the view.
+	 * @var null
 	 */
-	protected $ttl = false;
+	protected $view = null;
 
 	/**
 	 * Configure the current block instance.
@@ -82,32 +85,30 @@ abstract class Block
 	 * Render the block.
 	 *
 	 * @access public
-	 * @return void
+	 * @return View
 	 */
 	public function render()
 	{
-		// intentionally left blank
+		if ($this->getView() === null) {
+			$view = get_class($this);
+			$view = Str::snake($view);
+
+			$this->setView('blocks.' . $view);
+		}
+
+		return View::make($this->getView())
+			->with('options', $this->getOptionResolver());
 	}
 
-	/**
-	 * @param  int $ttl
-	 * @return $this
-	 */
-	public function setTtl($ttl)
+	public function setView($view)
 	{
-		$this->ttl = $ttl;
+		$this->view = $view;
 		return $this;
 	}
 
-	/**
-	 * Get the block ttl.
-	 *
-	 * @access public
-	 * @return int
-	 */
-	public function getTtl()
+	public function getView()
 	{
-		return $this->ttl;
+		return $this->view;
 	}
 
 }
