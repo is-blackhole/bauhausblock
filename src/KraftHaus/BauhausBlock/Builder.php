@@ -28,10 +28,16 @@ class Builder
 		$block = (new $class)
 			->setOptionResolver(new OptionResolver);
 
-		$block->configure($block->getOptionResolver());
-		$block->execute();
+		if ($block->getTtl() && Cache::has($class)) {
+			return Cache::get($class);
+		}
 
-		return $block->render();
+		return Cache::remember($class, $block->getTtl(), function() use ($block) {
+			$block->configure($block->getOptionResolver());
+			$block->execute();
+
+			return $block->render()->render();
+		});
 	}
 
 }

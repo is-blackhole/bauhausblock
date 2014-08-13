@@ -31,6 +31,12 @@ abstract class Block
 	protected $optionResolver;
 
 	/**
+	 * Holds the cache ttl.
+	 * @var integer
+	 */
+	protected $ttl = null;
+
+	/**
 	 * When overridden, this path will be used to render the view.
 	 * @var null
 	 */
@@ -98,6 +104,17 @@ abstract class Block
 
 		return View::make($this->getView())
 			->with('options', $this->getOptionResolver());
+	}
+
+	public function setTtl($ttl)
+	{
+		$this->ttl = (int) $ttl;
+		return $this;
+	}
+
+	public function getTtl()
+	{
+		return $this->ttl;
 	}
 
 	public function setView($view)
