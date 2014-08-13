@@ -37,12 +37,6 @@ abstract class Block
 	protected $ttl = null;
 
 	/**
-	 * When overridden, this path will be used to render the view.
-	 * @var null
-	 */
-	protected $view = null;
-
-	/**
 	 * Configure the current block instance.
 	 *
 	 * @param  OptionResolver $resolver
@@ -95,15 +89,10 @@ abstract class Block
 	 */
 	public function render()
 	{
-		if ($this->getView() === null) {
-			$view = get_class($this);
-			$view = Str::snake($view);
-
-			$this->setView('blocks.' . $view);
+		if ($this->getOptionResolver()->has('view')) {
+			return View::make($this->getOptionResolver()->get('view'))
+				->with('options', $this->getOptionResolver());
 		}
-
-		return View::make($this->getView())
-			->with('options', $this->getOptionResolver());
 	}
 
 	/**
@@ -129,31 +118,6 @@ abstract class Block
 	public function getTtl()
 	{
 		return $this->ttl;
-	}
-
-	/**
-	 * Set the view path.
-	 *
-	 * @param  string $view
-	 *
-	 * @access public
-	 * @return $this
-	 */
-	public function setView($view)
-	{
-		$this->view = $view;
-		return $this;
-	}
-
-	/**
-	 * Get the view path.
-	 *
-	 * @access public
-	 * @return null|string
-	 */
-	public function getView()
-	{
-		return $this->view;
 	}
 
 }
