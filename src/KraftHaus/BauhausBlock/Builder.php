@@ -22,6 +22,15 @@ use KraftHaus\BauhausBlock\Resolver\OptionResolver;
 class Builder
 {
 
+	/**
+	 * Render a block instance.
+	 *
+	 * @param  string $type
+	 * @param  array  $options
+	 *
+	 * @access public
+	 * @return mixed
+	 */
 	public function render($type, array $options = [])
 	{
 		$class = Str::studly($type . 'Block');
