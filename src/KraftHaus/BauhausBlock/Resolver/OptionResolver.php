@@ -18,7 +18,26 @@ namespace KraftHaus\BauhausBlock\Resolver;
 class OptionResolver
 {
 
+	/**
+	 * Holds the options.
+	 * @var array
+	 */
 	protected $options = [];
+
+	/**
+	 * Public class constructor.
+	 *
+	 * @param  array $options
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function __construct(array $options = [])
+	{
+		foreach ($options as $key => $value) {
+			$this->set($key, $value);
+		}
+	}
 
 	/**
 	 * Magic option setter.

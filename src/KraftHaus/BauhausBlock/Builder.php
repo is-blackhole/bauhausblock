@@ -22,11 +22,11 @@ use KraftHaus\BauhausBlock\Resolver\OptionResolver;
 class Builder
 {
 
-	public function render($type)
+	public function render($type, array $options = [])
 	{
 		$class = Str::studly($type . 'Block');
 		$block = (new $class)
-			->setOptionResolver(new OptionResolver);
+			->setOptionResolver(new OptionResolver($options));
 
 		if ($block->getTtl() && Cache::has($class)) {
 			return Cache::get($class);
