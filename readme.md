@@ -89,7 +89,7 @@ class RssBlock extends Block
 }
 ```
 
-Create the view for this block at `app/views/blocks/rss` with the following contents:
+Create the view for this block at `app/views/blocks/rss.blade.php` with the following contents:
 ```php
 <ul>
     @foreach ($options->feed as $item)
